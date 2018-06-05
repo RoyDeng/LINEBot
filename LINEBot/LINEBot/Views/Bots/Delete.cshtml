@@ -1,0 +1,48 @@
+﻿@model LINEBot.Models.Bot
+
+@{
+    ViewBag.Title = "刪除機器人";
+}
+
+<div class="row animated fadeInRight">
+    <div class="col-md-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>機器人細節</h5>
+            </div>
+            <div>
+                <div class="ibox-content profile-content">
+                    <h5>
+                        Channel Token
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.ChannelToken)
+                    </p>
+                    <h5>
+                        Webhook
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.Webhook)
+                    </p>
+                    <h5>
+                        Channel Secret
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.ChannelSecret)
+                    </p>
+                    <div class="user-button">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="submit" value="確定" class="btn btn-primary btn-sm btn-block" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

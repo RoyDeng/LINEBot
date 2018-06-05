@@ -1,0 +1,169 @@
+﻿@model Tuple<LINEBot.Models.Bot, List<LINEBot.Models.Message>>
+
+@{
+    ViewBag.Title = "機器人細節";
+}
+
+<div class="row animated fadeInRight">
+    <div class="col-md-4">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>機器人細節</h5>
+            </div>
+            <div>
+                <div class="ibox-content profile-content">
+                    <h5>
+                        Channel Token
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.Item1.ChannelToken)
+                    </p>
+                    <h5>
+                        Webhook
+                    </h5>
+                    <p>
+                        https://linebotbeta.azurewebsites.net/webhook
+                    </p>
+                    <h5>
+                        Channel Secret
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.Item1.ChannelSecret)
+                    </p>
+                    <div class="user-button">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="btn btn-primary btn-sm btn-block" href="@Url.Action("Edit", "Bots", new { id = Model.Item1.BotId })">
+                                    <i class="fa fa-edit"></i> 編輯機器人
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>訊息</h5>
+                <div class="ibox-tools">
+                    <a class="btn btn-success" href="@Url.Action("Create", "Messages", new { id = Model.Item1.BotId })">
+                        <i class="fa fa-plus"></i> 新增訊息
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover dataTables">
+                        <thead>
+                            <tr>
+                                <th>事件</th>
+                                <th>類型</th>
+                                <th>關鍵字</th>
+                                <th>文字</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Item2)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            switch (item.Event)
+                                            {
+                                                case 1:
+                                                    <text>Beacon</text>
+                                                    break;
+                                                case 2:
+                                                    <text>追蹤</text>
+                                                    break;
+                                                case 3:
+                                                    <text>加入</text>
+                                                    break;
+                                                case 4:
+                                                    <text>離開</text>
+                                                    break;
+                                                case 5:
+                                                    <text>訊息</text>
+                                                    break;
+                                                case 6:
+                                                    <text>回傳</text>
+                                                    break;
+                                                case 7:
+                                                    <text>取消追蹤</text>
+                                                    break;
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @{
+                                            switch (item.Type)
+                                            {
+                                                case 1:
+                                                    <text>文字</text>
+                                                    break;
+                                                case 2:
+                                                    <text>貼圖</text>
+                                                    break;
+                                                case 3:
+                                                    <text>圖片</text>
+                                                    break;
+                                                case 4:
+                                                    <text>影片</text>
+                                                    break;
+                                                case 5:
+                                                    <text>聲音</text>
+                                                    break;
+                                                case 6:
+                                                    <text>位置</text>
+                                                    break;
+                                                case 7:
+                                                    <text>圖片地圖</text>
+                                                    break;
+                                                case 8:
+                                                    <text>模板</text>
+                                                    break;
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @{
+                                            string[] keywords = item.KeyWord.Split(',');
+                                            foreach (string keyword in keywords)
+                                            {
+                                                <span class="label label-primary">@keyword</span>
+                                            }
+                                        }
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Text)</td>
+                                    <td>
+                                        <a class="btn btn-primary" href="@Url.Action("Edit", "Messages", new { id = item.MessageId })">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-info" href="@Url.Action("Details", "Messages", new { id = item.MessageId })">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-danger" href="@Url.Action("Delete", "Messages", new { id = item.MessageId })">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>事件</th>
+                                <th>類型</th>
+                                <th>關鍵字</th>
+                                <th>文字</th>
+                                <th>操作</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

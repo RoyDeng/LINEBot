@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - 聊天機器人</title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/font-awesome/css/font-awesome.css")
+    @Styles.Render("~/Content/plugins/dataTables/datatables.min.css")
+    @Styles.Render("~/Content/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css")
+    @Styles.Render("~/Content/animate.css")
+    @Styles.Render("~/Content/style.css")
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img class="img-circle" src="~/Content/profile_small.jpg" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">@Session["LastName"] @Session["FirstName"]</strong>
+                                    </span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="@Url.Action("Edit", "Auth")">個人資料</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action("Logout", "Auth")">登出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            機器人
+                        </div>
+                    </li>
+                    <li class="active">
+                        <a href="@Url.Action("Index", "Bots")"><i class="fa fa-comments"></i> <span class="nav-label">機器人</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <a href="@Url.Action("Logout", "Auth")">
+                                <i class="fa fa-sign-out"></i> 登出
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-9">
+                    <h2>@ViewBag.Title</h2>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <strong>@ViewBag.Title</strong>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="wrapper wrapper-content">
+                @RenderBody()
+            </div>
+            <div class="footer">
+                <div>
+                    <strong>Copyright</strong> CYCU &copy; @DateTime.Now.Year
+                </div>
+            </div>
+
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/plugins/metisMenu/jquery.metisMenu.js")
+    @Scripts.Render("~/Scripts/plugins/slimscroll/jquery.slimscroll.min.js")
+    @Scripts.Render("~/Scripts/plugins/dataTables/datatables.min.js")
+    @Scripts.Render("~/Scripts/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js")
+    @Scripts.Render("~/Scripts/inspinia.js")
+    @Scripts.Render("~/Scripts/plugins/pace/pace.min.js")
+    <script>
+        $(document).ready(function () {
+            $('.dataTables').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+            $('.tagsinput').tagsinput({
+                tagClass: 'label label-primary'
+            });
+        });
+
+    </script>
+</body>
+</html>

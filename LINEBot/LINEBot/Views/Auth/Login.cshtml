@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入 - 聊天機器人</title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Styles.Render("~/Content/font-awesome/css/font-awesome.css")
+    @Styles.Render("~/Content/animate.css")
+    @Styles.Render("~/Content/style.css")
+</head>
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <h3>歡迎來到聊天機器人</h3>
+            @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "m-t" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <input type="email" class="form-control" name="Email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="Password" placeholder="密碼" required>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登入</button>
+                <p class="text-muted text-center"><small>還沒有帳戶嗎？</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="@Url.Action("Register", "Auth")">建立帳戶</a>
+            }
+            <p class="m-t"> <small>CYCU &copy; @DateTime.Now.Year</small> </p>
+        </div>
+    </div>
+    @Scripts.Render("~/Scripts/jquery-3.1.1.min.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+</body>
+</html>

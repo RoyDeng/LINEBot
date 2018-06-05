@@ -1,0 +1,92 @@
+﻿@model LINEBot.Models.Message
+
+@{
+    ViewBag.Title = "編輯訊息";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>編輯訊息</h5>
+            </div>
+            <div class="ibox-content">
+                @using (Html.BeginForm("Edit", "Messages", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.MessageId)
+                    @Html.HiddenFor(model => model.BotId)
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Event">事件</label>
+                        <div class="col-sm-10">
+                            <select id="Type" class="form-control m-b" name="Event">
+                                <option value="1" @(Model.Event == 1 ? "selected" : "")>Beacon</option>
+                                <option value="2" @(Model.Event == 2 ? "selected" : "")>追蹤</option>
+                                <option value="3" @(Model.Event == 3 ? "selected" : "")>加入</option>
+                                <option value="4" @(Model.Event == 4 ? "selected" : "")>離開</option>
+                                <option value="5" @(Model.Event == 5 ? "selected" : "")>訊息</option>
+                                <option value="6" @(Model.Event == 6 ? "selected" : "")>回傳</option>
+                                <option value="7" @(Model.Event == 7 ? "selected" : "")>取消追蹤</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Type">類型</label>
+                        <div class="col-sm-10">
+                            <select id="Type" class="form-control m-b" name="Type">
+                                <option value="1" @(Model.Type == 1 ? "selected" : "")>文字</option>
+                                <option value="2" @(Model.Type == 2 ? "selected" : "")>貼圖</option>
+                                <option value="3" @(Model.Type == 3 ? "selected" : "")>圖片</option>
+                                <option value="4" @(Model.Type == 4 ? "selected" : "")>影片</option>
+                                <option value="5" @(Model.Type == 5 ? "selected" : "")>聲音</option>
+                                <option value="6" @(Model.Type == 6 ? "selected" : "")>位置</option>
+                                <option value="7" @(Model.Type == 7 ? "selected" : "")>圖片地圖</option>
+                                <option value="8" @(Model.Type == 8 ? "selected" : "")>按鈕</option>
+                                <option value="9" @(Model.Type == 9 ? "selected" : "")>確認</option>
+                                <option value="10" @(Model.Type == 10 ? "selected" : "")>輪播</option>
+                                <option value="11" @(Model.Type == 11 ? "selected" : "")>圖片輪播</option>
+                                <option value="12" @(Model.Type == 12 ? "selected" : "")>豐富菜單</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Type">關鍵字</label>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.KeyWord, new { htmlAttributes = new { @class = "tagsinput form-control" } })
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="ImageUrl">圖片 <br />
+                        <small class="text-navy">超連結</small></label>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.ImageUrl, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Title">標題</label>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Text">文字</label>
+                        <div class="col-sm-10">
+                            @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-primary" type="submit">確定</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

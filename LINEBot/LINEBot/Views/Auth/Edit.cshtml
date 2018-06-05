@@ -1,0 +1,89 @@
+﻿@model LINEBot.Models.Member
+
+@{
+    ViewBag.Title = "個人資料";
+}
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab-profile">個人資料</a></li>
+                    <li class=""><a data-toggle="tab" href="#tab-security">安全性</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-profile" class="tab-pane active">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("Edit", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(model => model.MemberId)
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelToken">Email</label>
+                                    <div class="col-sm-10">
+                                        <p class="form-control-static">@Model.Email</p>
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelSecret">姓氏</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.LastName)
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelSecret">姓名</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.FirstName)
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit">確定</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="tab-security" class="tab-pane">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("ChangePassword", "Auth", FormMethod.Post, new { @class = "form-horizontal" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelToken">目前密碼</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="CurrentPassword">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelSecret">新密碼</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="NewPassword">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label" for="ChannelSecret">確認新密碼</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="ConfirmPassword">
+                                    </div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group">
+                                    <div class="col-sm-4 col-sm-offset-2">
+                                        <button class="btn btn-primary" type="submit">確定</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

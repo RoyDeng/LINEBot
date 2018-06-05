@@ -1,0 +1,121 @@
+﻿@model LINEBot.Models.Message
+
+@{
+    ViewBag.Title = "訊息細節";
+}
+
+<div class="row animated fadeInRight">
+    <div class="col-md-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>訊息細節</h5>
+            </div>
+            <div>
+                <div class="ibox-content profile-content">
+                    <h5>
+                        事件
+                    </h5>
+                    <p>
+                        @{
+                            switch (Model.Event)
+                            {
+                                case 1:
+                                    <text>Beacon</text>
+                                    break;
+                                case 2:
+                                    <text>追蹤</text>
+                                    break;
+                                case 3:
+                                    <text>加入</text>
+                                    break;
+                                case 4:
+                                    <text>離開</text>
+                                    break;
+                                case 5:
+                                    <text>訊息</text>
+                                    break;
+                                case 6:
+                                    <text>回傳</text>
+                                    break;
+                                case 7:
+                                    <text>取消追蹤</text>
+                                    break;
+                            }
+                        }
+                    </p>
+                    <h5>
+                        類型
+                    </h5>
+                    <p>
+                        @{
+                            switch (Model.Type) {
+                                case 1:
+                                    <text>文字</text>
+                                    break;
+                                case 2:
+                                    <text>貼圖</text>
+                                    break;
+                                case 3:
+                                    <text>圖片</text>
+                                    break;
+                                case 4:
+                                    <text>影片</text>
+                                    break;
+                                case 5:
+                                    <text>聲音</text>
+                                    break;
+                                case 6:
+                                    <text>位置</text>
+                                    break;
+                                case 7:
+                                    <text>圖片地圖</text>
+                                    break;
+                                case 8:
+                                    <text>模板</text>
+                                    break;
+                            }
+                        }
+                    </p>
+                    <h5>
+                        關鍵字
+                    </h5>
+                    <p>
+                        @{
+                            string[] keywords = Model.KeyWord.Split(',');
+                            foreach (string keyword in keywords)
+                            {
+                                <span class="label label-primary">@keyword</span>
+                            }
+                        }
+                    </p>
+                    <h5>
+                        圖片
+                    </h5>
+                    <div class="photos">                        <a target="_blank" href="@Model.ImageUrl"> <img class="feed-photo" src="@Model.ImageUrl"></a>
+                    </div>
+                    <h5>
+                        標題
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.Title)
+                    </p>
+                    <h5>
+                        文字
+                    </h5>
+                    <p>
+                        @Html.DisplayFor(model => model.Text)
+                    </p>
+                    <div class="user-button">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a class="btn btn-primary btn-sm btn-block" href="@Url.Action("Edit", "Messages", new { id = Model.MessageId })">
+                                    <i class="fa fa-edit"></i> 編輯訊息
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

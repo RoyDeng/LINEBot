@@ -1,0 +1,93 @@
+﻿@model LINEBot.Models.Bot
+
+@{
+    ViewBag.Title = "新增訊息";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>編輯訊息</h5>
+            </div>
+            <div class="ibox-content">
+                @using (Html.BeginForm("Create", "Messages", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="BotId" value="@Model.BotId">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Event">事件</label>
+                        <div class="col-sm-10">
+                            <select id="Event" class="form-control m-b" name="Event">
+                                <option value="1">Beacon</option>
+                                <option value="2">追蹤</option>
+                                <option value="3">加入</option>
+                                <option value="4">離開</option>
+                                <option value="5">訊息</option>
+                                <option value="6">回傳</option>
+                                <option value="7">取消追蹤</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Type">類型</label>
+                        <div class="col-sm-10">
+                            <select id="Type" class="form-control m-b" name="Type">
+                                <option value="1">文字</option>
+                                <option value="2">貼圖</option>
+                                <option value="3">圖片</option>
+                                <option value="4">影片</option>
+                                <option value="5">聲音</option>
+                                <option value="6">位置</option>
+                                <option value="7">圖片地圖</option>
+                                <option value="8">按鈕</option>
+                                <option value="9">確認</option>
+                                <option value="10">輪播</option>
+                                <option value="11">圖片輪播</option>
+                                <option value="12">豐富菜單</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="KeyWord">關鍵字</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="KeyWord" class="tagsinput form-control" name="KeyWord" required>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="ImageUrl">
+                            圖片 <br />
+                            <small class="text-navy">超連結</small>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" id="ImageUrl" class="form-control" name="ImageUrl">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Title">標題</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="Title" class="form-control" name="Title">
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="Text">文字</label>
+                        <div class="col-sm-10">
+                            <textarea id="Text" class="form-control" name="Text"></textarea>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-2">
+                            <button class="btn btn-primary" type="submit">確定</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

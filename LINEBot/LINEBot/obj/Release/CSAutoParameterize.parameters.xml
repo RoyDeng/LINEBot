@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DbConnection-Web.config Connection String" description="DbConnection 應用程式在 web.config 中用來存取資料庫的連接字串。" defaultValue="Server=tcp:linebot-roy.database.windows.net,1433;Initial Catalog=LineBotDatabase;Persist Security Info=False;User ID=Roy;Password=YukiDeng159357;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\LINEBot\\LINEBot\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DbConnection']/@connectionString" />
+  </parameter>
+</parameters>

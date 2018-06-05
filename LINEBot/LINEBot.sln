@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINEBot", "LINEBot\LINEBot.csproj", "{B1BEAD90-5281-4263-9A56-C516BCCB9930}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1BEAD90-5281-4263-9A56-C516BCCB9930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BEAD90-5281-4263-9A56-C516BCCB9930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BEAD90-5281-4263-9A56-C516BCCB9930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BEAD90-5281-4263-9A56-C516BCCB9930}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4419668-9B42-4044-B4EB-549A604B7B42}
+	EndGlobalSection
+EndGlobal

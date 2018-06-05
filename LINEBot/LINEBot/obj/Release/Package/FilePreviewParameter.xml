@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="LINEBotBeta" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\LINEBot\\LINEBot\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\LINEBot\\LINEBot\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DbConnection-Web.config Connection String" description="" value="Server=tcp:linebot-roy.database.windows.net,1433;Initial Catalog=LineBotDatabase;Persist Security Info=False;User ID=Roy;Password=YukiDeng159357;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\LINEBot\\LINEBot\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DbConnection']/@connectionString" />
+  </parameter>
+</parameters>
